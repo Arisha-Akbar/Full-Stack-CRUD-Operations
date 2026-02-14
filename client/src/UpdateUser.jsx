@@ -10,7 +10,7 @@ function UpdateUser() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3001/getUser/" + id)
+      .get(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/getuser + id`)
       .then((result) => {
         console.log(result);
         setName(result.data.name);
@@ -21,19 +21,19 @@ function UpdateUser() {
   }, []);
 
   const { id } = useParams();
- 
-  
-   const Update = (e) => {
+
+  const Update = (e) => {
     e.preventDefault();
     axios
-      .put("http://localhost:3001/updateUser/"+id, { name, email, age })
+      .put(
+        `${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/delete + id, { name, email, age }`,
+      )
       .then((result) => {
         console.log(result);
         navigate("/");
       })
       .catch((err) => console.log(err));
   };
-
 
   return (
     <div className="d-flex vh-100 bg-primary justify-content-center align-items-center">

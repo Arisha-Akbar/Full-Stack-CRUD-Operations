@@ -7,14 +7,14 @@ function Users() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3001/")
+      .get(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}`)
       .then((result) => setUsers(result.data))
       .catch((err) => console.log(err));
   }, []);
 
   const handleDelete = (id) => {
     axios
-      .delete("http://localhost:3001/deleteUser/" + id)
+      .delete(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/delete + id`)
       .then((res) => {
         console.log(res);
         window.location.reload();
